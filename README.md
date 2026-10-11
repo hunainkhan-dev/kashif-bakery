@@ -136,6 +136,8 @@ The Vite dev server proxies `/api` to `http://localhost:5000`, so no CORS setup 
 
 ## ☁️ Deploy
 
+Full step-by-step guide: **[docs/DEPLOY.md](docs/DEPLOY.md)**. In short:
+
 1. **MongoDB Atlas** — create a free cluster, copy the `MONGO_URI`.
 2. **API → Render** — new Web Service from `server/` (a `render.yaml` blueprint is included).
    Set `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL` (your Vercel URL). Run the seed once.
