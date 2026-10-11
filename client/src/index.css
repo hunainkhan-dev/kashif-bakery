@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-cream text-ink font-body leading-relaxed antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-bold uppercase leading-none tracking-tight;
+  }
+  img {
+    @apply block max-w-full;
+  }
+}
+
+@layer components {
+  /* Neo-brutalist button — the signature press-in interaction */
+  .btn {
+    @apply inline-flex items-center gap-2 font-display font-semibold text-base px-7 py-3.5
+           border-[3px] border-ink rounded-full bg-pink text-white shadow-pop cursor-pointer
+           transition-transform duration-150 select-none;
+  }
+  .btn:hover {
+    @apply -translate-x-0.5 -translate-y-0.5 shadow-pop-lg;
+  }
+  .btn:active {
+    @apply translate-x-0.5 translate-y-0.5 shadow-pop-sm;
+  }
+  .btn-wa {
+    @apply bg-[#25D366] text-white;
+  }
+  .btn-mustard {
+    @apply bg-mustard text-ink;
+  }
+  .btn-ghost {
+    @apply bg-paper text-ink;
+  }
+
+  .eyebrow {
+    @apply font-display font-semibold text-[13px] tracking-[0.14em] uppercase text-pink inline-flex gap-1.5 items-center;
+  }
+
+  /* Product / content card */
+  .card-pop {
+    @apply bg-paper border-[3px] border-ink rounded-[22px] shadow-pop transition-transform duration-200;
+  }
+  .card-pop:hover {
+    @apply -translate-x-[3px] -translate-y-[3px] shadow-pop-lg;
+  }
+
+  .pill {
+    @apply font-display font-semibold text-[15px] px-5 py-2.5 border-[3px] border-ink rounded-full bg-paper cursor-pointer transition-transform;
+  }
+  .pill-active {
+    @apply bg-pink text-white;
+  }
+
+  .input-pop {
+    @apply w-full font-body text-base px-4 py-3 border-[3px] border-ink rounded-2xl bg-paper
+           outline-none focus:shadow-pop focus:-translate-x-0.5 focus:-translate-y-0.5 transition-all;
+  }
+}
+
+/* Scroll-reveal */
+.rv {
+  opacity: 0;
+  transform: translateY(34px);
+}
+.rv.in {
+  opacity: 1;
+  transform: none;
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv {
+    opacity: 1;
+    transform: none;
+  }
+  * {
+    animation: none !important;
+  }
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  z-index: 300;
+  pointer-events: none;
+}
