@@ -11,6 +11,8 @@ import rateLimit from 'express-rate-limit';
 
 import { connectDB } from './config/db.js';
 import { notFound, errorHandler } from './middleware/error.js';
+import Product from './models/Product.js';
+import { seedData } from './seed.js';
 import authRoutes from './routes/auth.js';
 import productRoutes from './routes/products.js';
 import orderRoutes from './routes/orders.js';
@@ -67,8 +69,23 @@ app.use(notFound);
 app.use(errorHandler);
 
 // ── Boot ──
-connectDB().then(() => {
+async function start() {
+  await connectDB();
+
+  // First-run convenience: if the catalogue is empty, seed products + admin once.
+  // Safe + idempotent — only runs against an empty database, so it never wipes data.
+  // Lets free hosts (no shell access) come up fully seeded on first deploy.
+  if (process.env.SEED_ON_START !== 'false') {
+    const count = await Product.countDocuments();
+    if (count === 0) {
+      console.log('• Empty database detected — seeding products + admin…');
+      await seedData();
+    }
+  }
+
   app.listen(env.PORT, () => console.log(`✔ Kashif Bakery API on http://localhost:${env.PORT} [${env.NODE_ENV}]`));
-});
+}
+
+start();
 
 export default app;

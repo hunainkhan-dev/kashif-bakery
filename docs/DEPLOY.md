@@ -39,8 +39,9 @@ Total time: ~15 minutes. All three are free.
    | `ADMIN_PASSWORD` | *(a strong password you choose)* |
    | `CLIENT_URL` | *(fill after step 3 — your Vercel URL)* |
 5. **Create Web Service.** When it's live, copy the URL, e.g. `https://kashif-bakery-api.onrender.com`.
-6. **Seed the database once:** Render dashboard → the service → **Shell** tab → run:
-   `npm run seed`
+6. **Seeding is automatic** — on first boot the API detects an empty database and loads the
+   menu + admin user by itself (no shell needed, which the free tier doesn't have). Check the
+   Render **Logs** for `Empty database detected — seeding…`.
 
 > Note: the free API "sleeps" after 15 min idle; the first request then takes ~50s to wake. Fine for a portfolio demo.
 
