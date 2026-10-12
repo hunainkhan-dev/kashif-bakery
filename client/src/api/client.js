@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // In dev, baseURL is '/api' (Vite proxies to the Express server).
-// In prod, set VITE_API_URL to the deployed API origin, e.g. https://kashif-bakery-api.onrender.com/api
+// In prod, set VITE_API_URL to the deployed API origin, e.g. https://kashif-bakery-api.vercel.app/api
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',
 });

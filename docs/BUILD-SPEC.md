@@ -8,7 +8,7 @@ Portfolio-grade, deployed, real full-stack. Reuse the existing bold/playful desi
 - **DB:** MongoDB Atlas (free) + Mongoose
 - **Auth:** JWT (admin) + bcrypt
 - **Payments:** COD + WhatsApp order (keep) + optional Stripe test
-- **Deploy:** frontend → Vercel · backend → Render · DB → Atlas
+- **Deploy:** frontend → Vercel · backend → Vercel (serverless) · DB → Atlas
 
 ## Folder structure
 ```
@@ -49,9 +49,9 @@ kashif-bakery/
 
 ## Deploy steps
 1. MongoDB Atlas free cluster → get `MONGO_URI`
-2. `server/` → Render (web service), set env vars
-3. `client/` → Vercel, set `VITE_API_URL` to Render URL
-4. Seed products once (script)
+2. `server/` → Vercel (serverless via `vercel.json`), set env vars
+3. `client/` → Vercel, set `VITE_API_URL` to the API URL
+4. DB auto-seeds on first request (no manual step)
 
 ## README.md (make it impressive — this gets you hired)
 ```

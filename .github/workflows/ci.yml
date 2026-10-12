@@ -38,4 +38,4 @@ jobs:
           cache-dependency-path: server/package-lock.json
       - run: npm ci
       - name: Syntax check
-        run: node --check server.js && node --check seed.js
+        run: node --check server.js && node --check app.js && node --check api/index.js && node --check seed.js

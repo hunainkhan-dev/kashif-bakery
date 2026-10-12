@@ -42,7 +42,9 @@ export async function seedData() {
 }
 
 // Run as a CLI (`npm run seed`): connect, seed, disconnect.
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+// Guard argv[1] — it is undefined when this module is imported (e.g. by the
+// serverless entry) rather than executed directly, and pathToFileURL would throw.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   connectDB()
     .then(seedData)
     .then(() => mongoose.disconnect())

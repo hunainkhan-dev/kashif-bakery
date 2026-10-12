@@ -28,7 +28,7 @@ within 72 hours.
 **Transport & headers**
 - `helmet` sets secure HTTP headers; `x-powered-by` disabled.
 - CORS restricted to the configured client origin(s).
-- `trust proxy` enabled for correct client IPs and rate limiting behind Render/Vercel.
+- `trust proxy` enabled for correct client IPs and rate limiting behind Vercel's proxy.
 - Global rate limit (300 req / 15 min per IP) as defence-in-depth.
 
 **Configuration**

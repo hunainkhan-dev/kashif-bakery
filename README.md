@@ -13,7 +13,7 @@ place real orders; the owner manages products and tracks orders from an admin da
 Built as a **production-shaped MERN app** — not a static page. Security-hardened
 (see [SECURITY.md](SECURITY.md)).
 
-> **Live demo:** _frontend_ `<vercel-url>` · _API_ `<render-url>/api/health`
+> **Live demo:** _frontend_ `<vercel-url>` · _API_ `<vercel-api-url>/api/health`
 > **Admin demo:** `/admin` · `admin@kashifbakery.com` / `Admin@12345`
 
 ![Storefront](docs/storefront.jpg)
@@ -52,7 +52,7 @@ Built as a **production-shaped MERN app** — not a static page. Security-harden
 | Database | MongoDB (Atlas free tier) |
 | Auth | JWT + bcrypt |
 | Validation | Zod |
-| Deploy | Vercel (client) · Render (API) · Atlas (DB) |
+| Deploy | Vercel (client + serverless API) · Atlas (DB) — 100% free, no card |
 
 ---
 
@@ -136,13 +136,15 @@ The Vite dev server proxies `/api` to `http://localhost:5000`, so no CORS setup 
 
 ## ☁️ Deploy
 
-Full step-by-step guide: **[docs/DEPLOY.md](docs/DEPLOY.md)**. In short:
+Full step-by-step guide: **[docs/DEPLOY.md](docs/DEPLOY.md)**. Everything runs on free tiers with
+**no credit card** (Vercel Hobby + Atlas M0). In short:
 
-1. **MongoDB Atlas** — create a free cluster, copy the `MONGO_URI`.
-2. **API → Render** — new Web Service from `server/` (a `render.yaml` blueprint is included).
-   Set `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL` (your Vercel URL). Run the seed once.
-3. **Client → Vercel** — import the repo, set **Root Directory** to `client/`,
-   add `VITE_API_URL=https://<your-render-url>/api`. Deploy.
+1. **MongoDB Atlas** — create a free M0 cluster, copy the `MONGO_URI`.
+2. **API → Vercel** — import the repo as a project with **Root Directory** `server/` (a `vercel.json`
+   runs the Express app as a serverless function). Set `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL`.
+   The DB auto-seeds on first request.
+3. **Client → Vercel** — import the repo again with **Root Directory** `client/`,
+   add `VITE_API_URL=https://<your-api-url>/api`. Deploy.
 
 ---
 
