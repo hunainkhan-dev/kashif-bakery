@@ -83,13 +83,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Reveal content instantly — skip the large sliding movement, which is the
+     part that can actually trigger motion sickness. */
   .rv {
     opacity: 1;
     transform: none;
+    transition: none;
   }
-  * {
-    animation: none !important;
-  }
+  /* Keep the small-amplitude, on-brand ambient loops (spin / bob / marquee)
+     running — they're decorative and central to the brand, and far gentler than
+     the blanket `animation: none` that previously froze the whole site. */
 }
 
 .confetti {
