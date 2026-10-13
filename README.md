@@ -13,8 +13,8 @@ place real orders; the owner manages products and tracks orders from an admin da
 Built as a **production-shaped MERN app** — not a static page. Security-hardened
 (see [SECURITY.md](SECURITY.md)).
 
-> **Live demo:** _frontend_ `<vercel-url>` · _API_ `<vercel-api-url>/api/health`
-> **Admin demo:** `/admin` · `admin@kashifbakery.com` / `Admin@12345`
+> **Live demo:** [kashif-bakery.vercel.app](https://kashif-bakery.vercel.app) · _API:_ [kashif-bakery-api.vercel.app/api/health](https://kashif-bakery-api.vercel.app/api/health)
+> **Admin:** [/admin](https://kashif-bakery.vercel.app/admin) · `admin@kashifbakery.com` _(password kept private so the public demo data stays intact — available on request)_
 
 ![Storefront](docs/storefront.jpg)
 ![Menu](docs/menu.jpg)
